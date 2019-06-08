@@ -1,0 +1,97 @@
+int n1 = 4;
+int n2 = 5;
+int n3 = 6;
+int n4 = 7;
+char c = 0;
+
+
+void setup() {
+  //frente
+  pinMode(n1, OUTPUT);
+  pinMode(n2, OUTPUT);
+  pinMode(n3, OUTPUT);
+  pinMode(n4, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  /*
+  frente();
+  delay(5000);
+  direita();
+  delay(500);
+  */
+  
+  if (Serial.available() > 0)
+  {
+    c = Serial.read();
+    Serial.print(c);
+    Serial.print("\n");
+    delay(200);
+
+    if (c == 'f') {
+      frente();
+    }
+
+    if (c == 'b') {
+      traz();
+    }
+
+    if (c == 'r') {
+      direita();
+    }
+
+    if (c == 'l') {
+      esquerda();
+    }
+
+    if (c == 's') {
+      parar();
+    }
+  }
+}
+
+
+
+
+// função frente()
+void frente() {
+  digitalWrite(n1, 1);
+  digitalWrite(n2, 0);
+  digitalWrite(n3, 0);
+  digitalWrite(n4, 1);
+
+}
+
+//função traz
+void traz() {
+  digitalWrite(n1, 0);
+  digitalWrite(n2, 1);
+  digitalWrite(n3, 1);
+  digitalWrite(n4, 0);
+}
+
+
+//função esquerda
+void esquerda() {
+  digitalWrite(n1, 0);
+  digitalWrite(n2, 1);
+  digitalWrite(n3, 0);
+  digitalWrite(n4, 1);
+}
+
+//função direita
+void direita() {
+  digitalWrite(n1, 1);
+  digitalWrite(n2, 0);
+  digitalWrite(n3, 1);
+  digitalWrite(n4, 0);
+}
+
+//função parar
+void parar() {
+  digitalWrite(n1, 0);
+  digitalWrite(n2, 0);
+  digitalWrite(n3, 0);
+  digitalWrite(n4, 0);
+}
